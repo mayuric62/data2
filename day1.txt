@@ -1,0 +1,653 @@
+DBMS
+   database management system
+
+table :
+collection of rows and cols
+2d 
+
+dept
+deptno	dname 	loc
+10	acct	mum   --> tuple  /row / record
+20	fin	pune
+30	mkt	bang
+40	adm	hyd
+
+cols : deptno	dname 	loc  --> fields / attributes
+
+database 
+   collection of tables
+   collection of related information
+   collection of structured and non structured data 
+
+database lnt
+1. dept  : 	20  rec
+deptno
+dname 
+loc
+
+2. emp_personal     500000
+empno
+ename
+address
+pan
+mobile 
+desg
+dob
+adharno
+passno
+
+3. salary   5000000
+empno
+month
+basic
+hra
+da
+td
+bonus
+tr_allow
+
+
+
+4. bank_details  7878999
+empno
+accno
+bankname
+ifsc
+branch
+
+5. attendance  6090988
+empno 
+month
+no_pre
+no_abs
+remark
+
+
+6. loan   500
+empno
+type_loan
+amt
+inst_amt
+period
+interest_rate
+
+7. travel    8989800
+empno
+stpoint
+endpoint
+km
+days
+charges 
+
+100 tables 
+
+			database
+			  |
+		----------------------------
+		|			|
+		structured		unstructured  
+	         data			data
+		|			|
+		RDBMS 			NOSQL (not only sql)
+	      ACID			CAP
+		20 tables 		10 tables
+
+
+DBMS
+   database management system
+   EG : clipper , foxbase , foxpro
+
+
+--adv dbms
+1 adding the data is fast
+2 modify the data is fast
+3 delete the data is fast
+4 retrieve the data is fast
+5 DBA (database administrator) role is present 
+	has the highest privilege on the db
+6 pk , uk is present
+
+--DBA functions
+1 add new user 
+2 change the password
+3 delete the user
+4 memory mangement 
+
+--dis adv DBMS
+1 there is no foreign key
+2 there is lot of redundancy / repeatation of the data
+3 memory requirement is more
+4 speed is low
+==========
+RDBMS
+   relational database mangement system
+
+eg : 
+mysql
+oracle...
+ms sql server  ..
+ms access
+DB2
+postgresql   ..
+sybase 
+infomix
+ingres
+....
+..
+
+--adv 
+1 pk , uk, fk
+2 DBA role is present
+3 the data is not repeated 
+4 memory requirement is less
+5 speed is high
+
+mysql 5.0
+mysql 5.3
+mysql 5.8
+..
+mysql 13
+
+----------------
+--relationships
+1 one to one
+    1 emp --->goes to 1 company	
+2 one to many
+     1 dept ---> has many emp
+3 many to many
+     many dept ---> there will be many emp
+
+---keys
+1 primary key
+2 foreign key
+3 unique key
+4 candidate key
+5 alternate key
+6 composite key
+
+--primary key
+   it is a identity of the row which is unique and not null
+   every table there will 1 col as pk
+   eg : dept  --> deptno
+	emp   --> empno
+	student --> roll
+
+dept
+deptno		dname		loc
+10		acct		mum --> 
+20		fin		bang
+30		mkt		pune
+
+--what is null
+empty value
+value is missing
+unknown 
+
+--foreign key
+  it is field inside the table which is pk of another table
+  can be repeated , can be null
+  it is used to create relationship between the 2 tables 
+
+pk : empno
+fk : deptno
+
+emp
+empno	ename	sal	deptno
+1	priti	50000	10
+2	priya	60000	null
+3	amit	55000	10
+
+--diff in pk and fk
+pk can not be null
+fk can be null
+
+pk can not be repeated
+fk can be repeated
+
+--uk
+	the values are not repeated , can be null 
+        eg
+emp
+empno	--> pk
+ename
+pan	-- uk
+adharno  --uk
+divno    --uk
+email    --uk
+mobile   --uk
+
+--diff in pk and uk
+pk can not be null
+uk can be null
+
+pk : there will be 1 col
+uk : multiple cols can be uk
+
+--candidate key
+   these are the fields where the data is not repeated and not null
+   eg deptno		dname		loc  : 3 cols
+   --pk : deptno  : 1
+   --alternate key : dname , loc  : 3-1 =2
+	are the cols other than pk col
+
+dept
+deptno		dname		loc
+10		acct		mum --> 
+20		fin		bang
+30		mkt		pune
+
+--composite key
+	it is a pk , consist of 2 or more cols
+
+empleave 
+empno		stdate		enddate
+1		2023-1-1	2023-1-2
+2		2023-1-1	2023-1-2
+1		2023-4-20	2023-4-25
+1		2023-5-10	2023-4-10
+		yyyy-mm-dd
+pk   --> empno + stdate  composite key
+
+--different language
+DDL  data definition language
+	create , drop, alter , truncate
+
+DML data manipulation language
+	insert, update, delete
+
+DQL data query language
+	select
+
+DCL data control language
+	grant , revoke
+
+TCL  transaction control language
+	commit, rollback, savepoint
+
+--master table
+    are tables where dml operations are rare
+    it has pk col
+
+dept
+deptno		dname		loc
+10		acct		mum 
+20		fin		bang
+30		mkt		pune
+
+eg : dept, student, accountHolder
+
+
+--transaction table 
+    are tables where dml operations is frequent
+    it has fk col
+    eg : bank_transaction table , ticket_booking
+
+--distributed architecture   or  client -server   architecture 
+eg : banking, gmail 
+
+
+				Server   --> 100 tables
+			          |      --, emp, dept,  bank_transaction table , ticket_booking
+			--------------------------------
+			|		|		|
+			client1		client2		client3
+		select * from emp;
+		343 rec
+
+======================
+RS Agarwal
+	vol1
+	vol2
+appti
+1
+
+23
+
+2 hrs
+
+1. revision : 30 min
+2. comm  ; 30 min
+3. appti  : 30-40 min
+
+======================
+technologies imp interview
+1. .net   :  1, 3, 4
+2. java   :  2, 3, 4, 5
+	core java , adv java , spring, sprint boot
+3. database
+4. ds
+5. devops   
+6. web developer
+============	 
+run -- mysql ---. command line client ---
+pass : root
+
+-clear  screen
+system cls
+or
+\! cls
+
+--display the name of databases
+show databases;
+
+--to see the table names present in db
+show tables;
+
+
+
+
+---create a database
+create database cdac;
+
+--open database
+use cdac;
+
+--to create a table
+create table dept(
+deptno int,
+dname varchar(20),
+loc varchar(20));
+
+insert into dept values(10, 'acct', 'mum');
+insert dept values(20, 'fin', 'bang');
+insert into dept values(30, 'mkt', 'pune'),(40, 'operation', 'hyd');
+
+--note
+into optional
+
+dept
+deptno		dname		loc
+10		acct		mum --> 
+20		fin		bang
+30		mkt		pune
+40		operation	hyd
+
+--modify the location to nashik for deptno 30
+update dept
+set loc='nashik'
+where deptno=30;
+
+--modify the name of the department as finance for deptno 20
+update dept
+set dname='finance'
+where deptno=20;
+
+--modify the location to chennai for account department
+update dept
+set loc='chennai' 
+where dname='acct';
+
+
+--delete the rec for deptno 40
+delete from dept;
+
+set autocommit=0;
+delete from dept;
+select * from dept;
+
+--truncate
+ will delete all the records , but the structure will be preserved
+ ddl 
+
+--eg
+truncate table dept;
+
+--to see the structure 
+desc dept;
+
+--note
+all the ddl commands (create, alter, drop, truncate) are autcommit  
+
+dml(insert, update, delete) commands can be rolled back
+
+create table emp(
+empno numeric(2) ,
+ename varchar(20),
+sal numeric(10,2),
+deptno int,
+doj date);
+
+insert into emp values(1, 'kiran', 17000, 10, '2023-1-1');
+insert into emp values(2, 'uma', 18000, 20, '2023-2-1');
+insert into emp values(3, 'amit', 19000, 30, '2023-3-1');
+commit;
+
+--commit
+	it is used to save the data permanatly to the server
+
+--rollback
+	to undo the transaction
+
+
+100.77			numeric(5,2)
+2000.66			numeric(6,2)
+
+1234
+
+
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2023-06-09     |
++----------------+
+1 row in set (0.01 sec)
+
+--to drop the table
+drop table emp;
+	will delete all the records along with the structure of the table.
+
+--diff in drop and truncate
+truncate : 	will delete all the records but the structure will be preserved
+drop: 	will delete all the records along with the structure of the table.
+
+--tee command
+    to redirect the commands and the output to a file
+
+--eg
+tee d:\priti\day1_commands_3.txt
+        | 	    |
+	folder	  file is created auto
+
+select * from emp;
+select * from dept;
+desc dept ;
+..
+..
+exit;
+
+
+--note
+data and the commands are not case sensitive 
+
+--to insert a record
+--1 
+insert into emp values(6, 'pr', 8888, 10, '2023-1-1');
+
+--2
+insert into emp (ename , empno, sal) values ('hina', 7, 8888);
+
+set autocommit=0;
+
+--source command
+	will auto executes all the sql command
+    
+source d:\priti\file1.sql
+	
+SQL : structured query lang
+
+====
+create table emp(
+empno numeric(2) primary key ,
+ename varchar(20) not null,
+sal numeric(10,2) not null,
+deptno int,
+doj date);
+
+insert into emp values(1, 'kiran', 17000, 10, '2023-1-1');
+insert into emp values(2, 'uma', 18000, 20, '2023-2-1');
+insert into emp values(3, 'amit', 19000, 30, '2023-3-1');
+insert into emp values(4, 'yatin', 17000, 10, '2023-1-1');
+insert into emp values(5, 'bhagya', 18000, 20, '2023-2-1');
+insert into emp values(6, 'amita', 19000, 30, '2023-3-1');
+
+commit;
+desc emp;
+
+==========
+--changing the heading of the col / giving alias of a col
+--1
+ select empno, ename as name, sal as salary from emp;
+			 |              |
+			alias		alias
+--2
+ select empno, sal salary from emp;
+
+--3
+ select empno, sal "Salary is" from emp;
+
+--distinct predicate	
+	to supress the duplication of the values
+	to avoid the duplication
+
+select distinct deptno from emp;
+
+drop table emp;
+drop table dept;
+
+google : emp dept script in mysql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
